@@ -44,13 +44,11 @@ class _AddToCartState extends State<AddToCart> {
                 width: 30,
                 child: new ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    foregroundColor: isDark ? Colors.white : Colors.black, backgroundColor: Colors.grey.withOpacity(0.3), shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                     ),
                     padding: EdgeInsets.all(0),
                     elevation: 0,
-                    primary: Colors.grey.withOpacity(0.3),
-                    onPrimary: isDark ? Colors.white : Colors.black,
                   ),
                   child: new Icon(Icons.remove, size: 18),
                   onPressed: () async {

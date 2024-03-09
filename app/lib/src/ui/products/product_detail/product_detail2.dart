@@ -421,8 +421,7 @@ class _ProductDetail2State extends State<ProductDetail2> {
             Expanded(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).colorScheme.secondary,
-                  onPrimary:  Theme.of(context).colorScheme.onSecondary,
+                  foregroundColor: Theme.of(context).colorScheme.onSecondary, backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 onPressed: () {
                   buyNow(context, product);

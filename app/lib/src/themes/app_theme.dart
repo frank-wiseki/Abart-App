@@ -1,6 +1,5 @@
 import 'package:app/src/models/theme/hex_color.dart';
 import 'package:flutter/material.dart';
-import 'package:dunes_icons/dunes_icons.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 import '../models/blocks_model.dart';
 
@@ -19,7 +18,6 @@ class GalleryThemeData {
     MaterialColor primarySwatch = _getPrimarySwatch(theme.primarySwatch);
     Color buttonColor = HexColor(theme.buttonColor);
     Color primaryColor = HexColor(theme.primaryColor).toString() == 'Color(0xffffffff)' ? Colors.white : HexColor(theme.primaryColor);
-    Color accentColor = HexColor(theme.accentColor);
 
     return ThemeData(
       primarySwatch: primarySwatch,
@@ -65,11 +63,10 @@ class GalleryThemeData {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
+            foregroundColor: Colors.white, shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(0)),
             ),
             elevation: 0,
-            onPrimary: Colors.white,
             shadowColor: Colors.black,
             minimumSize: Size(400.0, 48.0),
             padding: EdgeInsets.all(0.0),
@@ -112,12 +109,10 @@ class GalleryThemeData {
       cardColor: Colors.black87,
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
+            foregroundColor: Colors.black, backgroundColor: Color(0xff03dac6), shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(0)),
             ),
             elevation: 0,
-            primary: Color(0xff03dac6),
-            onPrimary: Colors.black,
             shadowColor: Colors.black,
             minimumSize: Size(400.0, 48.0),
             padding: EdgeInsets.all(0.0),

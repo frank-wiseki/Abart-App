@@ -8,7 +8,6 @@ import '../../../models/product_model.dart';
 import '../../../functions.dart';
 
 class VariationProduct extends StatefulWidget {
-
   VariationProduct({
     Key? key,
     this.addonFormKey,
@@ -28,7 +27,6 @@ class VariationProduct extends StatefulWidget {
 }
 
 class _VariationProductState extends State<VariationProduct> {
-
   var isLoading = false;
 
   @override
@@ -44,82 +42,94 @@ class _VariationProductState extends State<VariationProduct> {
           _variationPrice()
         ],
       ),
-      trailing: (getQty() != 0 || isLoading) ? ButtonBar(
-        alignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          SizedBox(
-            height: 34,
-            width: 34,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+      trailing: (getQty() != 0 || isLoading)
+          ? ButtonBar(
+              alignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(
+                  height: 34,
+                  width: 34,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: isDark ? Colors.white : Colors.black,
+                      backgroundColor: Colors.grey.withOpacity(0.3),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      elevation: 0,
+                      padding: EdgeInsets.all(0),
+                    ),
+                    child: new Icon(Icons.remove, size: 18),
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      bool status = await context
+                          .read<ShoppingCart>()
+                          .decreaseQty(context, widget.id,
+                              variationId: widget.variation.variationId);
+                      setState(() {
+                        isLoading = false;
+                      });
+                    },
+                  ),
                 ),
-                primary: Colors.grey.withOpacity(0.3),
-                elevation: 0,
-                onPrimary: isDark ? Colors.white : Colors.black,
-                padding: EdgeInsets.all(0),
-              ),
-              child: new Icon(Icons.remove, size: 18),
-              onPressed: () async {
-                setState(() {
-                  isLoading = true;
-                });
-                bool status = await context.read<ShoppingCart>().decreaseQty(context, widget.id, variationId: widget.variation.variationId);
-                setState(() {
-                  isLoading = false;
-                });
-              },
-            ),
-          ),
-          isLoading ? SizedBox(
-            child: CircularProgressIndicator(strokeWidth: 2),
-            height: 20.0,
-            width: 20.0,
-          ) :  SizedBox(
-            width: 20.0,
-            child: Text(getQty().toString(), textAlign: TextAlign.center,),
-          ),
-          SizedBox(
-            height: 34,
-            width: 34,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                isLoading
+                    ? SizedBox(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                        height: 20.0,
+                        width: 20.0,
+                      )
+                    : SizedBox(
+                        width: 20.0,
+                        child: Text(
+                          getQty().toString(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                SizedBox(
+                  height: 34,
+                  width: 34,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      elevation: 0,
+                      padding: EdgeInsets.all(0),
+                    ),
+                    child: new Icon(Icons.add, size: 18),
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      bool status = await context
+                          .read<ShoppingCart>()
+                          .increaseQty(context, widget.id,
+                              variationId: widget.variation.variationId);
+                      setState(() {
+                        isLoading = false;
+                      });
+                    },
+                  ),
                 ),
-                elevation: 0,
-                padding: EdgeInsets.all(0),
+              ],
+            )
+          : SizedBox(
+              height: 34,
+              child: TextButton(
+                child: Text(widget.model.blocks.localeText.add.toUpperCase()),
+                onPressed: () => addToCart(context),
               ),
-              child: new Icon(Icons.add, size: 18),
-              onPressed: () async {
-                setState(() {
-                  isLoading = true;
-                });
-                bool status = await context.read<ShoppingCart>().increaseQty(context, widget.id, variationId: widget.variation.variationId);
-                setState(() {
-                  isLoading = false;
-                });
-              },
             ),
-          ),
-        ],
-      ) : SizedBox(
-        height: 34,
-        child: TextButton(
-          child: Text(widget.model.blocks.localeText.add.toUpperCase()),
-          onPressed: () => addToCart(context),
-        ),
-      ),
     );
   }
 
   getTitle() {
     var name = '';
     for (var value in widget.variation.option) {
-      if(value.value != null)
-      name = name + value.value + ' ';
+      if (value.value != null) name = name + value.value + ' ';
     }
     return name;
   }
@@ -129,7 +139,9 @@ class _VariationProductState extends State<VariationProduct> {
       width: 45,
       height: 45,
       child: CachedNetworkImage(
-        imageUrl: widget.variation.image.url.isNotEmpty ? widget.variation.image.url : '',
+        imageUrl: widget.variation.image.url.isNotEmpty
+            ? widget.variation.image.url
+            : '',
         imageBuilder: (context, imageProvider) => Card(
           clipBehavior: Clip.antiAlias,
           elevation: 0.0,
@@ -167,15 +179,17 @@ class _VariationProductState extends State<VariationProduct> {
     setState(() {
       isLoading = true;
     });
-    if(widget.addonFormKey != null && widget.addonFormKey!.currentState!.validate()) {
+    if (widget.addonFormKey != null &&
+        widget.addonFormKey!.currentState!.validate()) {
       widget.addonFormKey!.currentState!.save();
       data.addAll(widget.addOnsFormData!);
     }
-    bool status = await context.read<ShoppingCart>().addToCartWithData(data, context);
+    bool status =
+        await context.read<ShoppingCart>().addToCartWithData(data, context);
     setState(() {
       isLoading = false;
     });
-    if(!status) {
+    if (!status) {
       Navigator.of(context).pop();
     }
   }
@@ -220,27 +234,38 @@ class _VariationProductState extends State<VariationProduct> {
   }*/
 
   getQty() {
-    if(context.read<ShoppingCart>().cart.cartContents.any((element) => element.variationId == widget.variation.variationId)) {
-      return context.read<ShoppingCart>().cart.cartContents.firstWhere((element) => element.variationId == widget.variation.variationId).quantity;
-    } else return 0;
+    if (context.read<ShoppingCart>().cart.cartContents.any(
+        (element) => element.variationId == widget.variation.variationId)) {
+      return context
+          .read<ShoppingCart>()
+          .cart
+          .cartContents
+          .firstWhere(
+              (element) => element.variationId == widget.variation.variationId)
+          .quantity;
+    } else
+      return 0;
   }
 
   _variationPrice() {
-    if(widget.variation.formattedPrice != null && widget.variation.formattedSalesPrice == null) {
-      return Text(parseHtmlString(widget.variation.formattedPrice!), style: TextStyle(
-        fontWeight: FontWeight.w600,
-      ));
-    } else if(widget.variation.formattedPrice != null && widget.variation.formattedSalesPrice != null) {
+    if (widget.variation.formattedPrice != null &&
+        widget.variation.formattedSalesPrice == null) {
+      return Text(parseHtmlString(widget.variation.formattedPrice!),
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ));
+    } else if (widget.variation.formattedPrice != null &&
+        widget.variation.formattedSalesPrice != null) {
       return Row(
         children: [
-          Text(parseHtmlString(widget.variation.formattedSalesPrice!), style: TextStyle(
-          fontWeight: FontWeight.w600,
-      )),
+          Text(parseHtmlString(widget.variation.formattedSalesPrice!),
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              )),
           SizedBox(width: 4),
-          Text(parseHtmlString(widget.variation.formattedPrice!), style: TextStyle(
-            fontSize: 10,
-            decoration: TextDecoration.lineThrough
-          )),
+          Text(parseHtmlString(widget.variation.formattedPrice!),
+              style: TextStyle(
+                  fontSize: 10, decoration: TextDecoration.lineThrough)),
         ],
       );
     }

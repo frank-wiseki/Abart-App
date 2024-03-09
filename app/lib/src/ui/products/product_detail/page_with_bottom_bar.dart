@@ -75,11 +75,9 @@ class _PageWithBottomCartState extends State<PageWithBottomCart> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        foregroundColor: Theme.of(context).colorScheme.onSecondary, backgroundColor: Theme.of(context).colorScheme.secondary, shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
-                        primary: Theme.of(context).colorScheme.secondary,
-                        onPrimary:  Theme.of(context).colorScheme.onSecondary,
                         minimumSize: Size(100.0, 48.0),
                       ),
                       child: addingToCart ? Container(

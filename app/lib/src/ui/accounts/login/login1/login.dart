@@ -264,7 +264,7 @@ class _SocialLoginPageState extends State<SocialLoginPage> {
             const SizedBox(height: 4.0),
             if(Platform.isIOS)
               ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(primary: isDark ? Colors.white : Colors.black, onPrimary: isDark ? Colors.black : Colors.white),
+                style: ElevatedButton.styleFrom(foregroundColor: isDark ? Colors.black : Colors.white, backgroundColor: isDark ? Colors.white : Colors.black),
                 onPressed: () async {
                   bool status = await widget.accountBloc.signInWithApple(context);
                   if (status) {
@@ -277,7 +277,7 @@ class _SocialLoginPageState extends State<SocialLoginPage> {
               ),
             const SizedBox(height: 4.0),
             ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(primary: Color(0xFFEA4335), onPrimary: Colors.white),
+              style: ElevatedButton.styleFrom(foregroundColor: Colors.white, backgroundColor: Color(0xFFEA4335)),
               onPressed: () async {
                 bool status =await widget.accountBloc.signInWithGoogle(context);
                 if (status) {
@@ -292,7 +292,7 @@ class _SocialLoginPageState extends State<SocialLoginPage> {
             ),
             const SizedBox(height: 4.0),
             ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(primary: Color(0xFF34B7F1), onPrimary: Colors.white),
+              style: ElevatedButton.styleFrom(foregroundColor: Colors.white, backgroundColor: Color(0xFF34B7F1)),
               onPressed: () async {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -307,7 +307,7 @@ class _SocialLoginPageState extends State<SocialLoginPage> {
             ),
             const SizedBox(height: 4.0),
             ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(primary: Color(0xFF3b5998), onPrimary: Colors.white),
+              style: ElevatedButton.styleFrom(foregroundColor: Colors.white, backgroundColor: Color(0xFF3b5998)),
               onPressed: () async {
                 // UserCredential userCredential = await signInWithApple();
               },

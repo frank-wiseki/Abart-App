@@ -178,9 +178,8 @@ class _SearchStoresState extends State<SearchStores> {
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: TextButton(
                 style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).brightness == Brightness.dark ? Color(0xff696969) : Color(0xfff2f2f2),
+                    foregroundColor: Theme.of(context).textTheme.bodyLarge!.color, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Color(0xff696969) : Color(0xfff2f2f2),
                     padding: EdgeInsets.all(8),
-                    onPrimary: Theme.of(context).textTheme.bodyText1!.color,
                     minimumSize: Size(56, 12)
                 ),
                 onPressed: () {
@@ -188,7 +187,7 @@ class _SearchStoresState extends State<SearchStores> {
                   widget.model.filter['search'] = inputController.text;
                   widget.model.getAllStores();
                 },
-                child: Text(element, style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                child: Text(element, style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 12
                 ))
             ),

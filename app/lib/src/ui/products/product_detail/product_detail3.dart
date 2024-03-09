@@ -118,8 +118,7 @@ class _ProductDetail3State extends State<ProductDetail3> {
                               Expanded(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    primary: Theme.of(context).colorScheme.secondary,
-                                    onPrimary:  Theme.of(context).colorScheme.onSecondary,
+                                    foregroundColor: Theme.of(context).colorScheme.onSecondary, backgroundColor: Theme.of(context).colorScheme.secondary,
                                   ),
                                   onPressed: () {
                                     buyNow(context, snapshot.data!);
@@ -571,8 +570,7 @@ class _ProductDetail3State extends State<ProductDetail3> {
             Expanded(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).colorScheme.secondary,
-                  onPrimary:  Theme.of(context).colorScheme.onSecondary,
+                  foregroundColor: Theme.of(context).colorScheme.onSecondary, backgroundColor: Theme.of(context).colorScheme.secondary,
                 ),
                 onPressed: () {
                   buyNow(context, product);

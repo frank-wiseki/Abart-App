@@ -118,7 +118,7 @@ dependency_overrides:
   image_picker_android: 0.8.4+13
   intl: any
   modal_bottom_sheet: ^3.0.0-pre
-  ffi: ^2.0.2
+  ffi: 2.1.0
 
   #package_info_plus_windows: 3.0.0
   #package_info_plus: any

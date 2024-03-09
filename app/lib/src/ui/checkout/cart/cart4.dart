@@ -2,7 +2,6 @@ import 'package:app/src/ui/checkout/cart/shopping_cart.dart';
 import 'package:app/src/ui/blocks/banners/custom_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dunes_icons/dunes_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:provider/src/provider.dart';
@@ -239,8 +238,8 @@ class ShoppingCartSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final smallAmountStyle = Theme.of(context).textTheme.subtitle1;
-    final largeAmountStyle = Theme.of(context).textTheme.headline6;
+    final smallAmountStyle = Theme.of(context).textTheme.titleMedium;
+    final largeAmountStyle = Theme.of(context).textTheme.titleLarge;
 
     CartModel cart = context.read<ShoppingCart>().cart;
 
@@ -520,13 +519,11 @@ class _ShoppingCartRowState extends State<ShoppingCartRow> {
               width: 30,
               child: new ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
+                  foregroundColor: isDark ? Colors.white : Colors.black, backgroundColor: Colors.grey.withOpacity(0.3), shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                   ),
                   padding: EdgeInsets.all(0),
                   elevation: 0,
-                  primary: Colors.grey.withOpacity(0.3),
-                  onPrimary: isDark ? Colors.white : Colors.black,
                 ),
                 child: new Icon(Icons.remove, size: 18),
                 onPressed: () async {

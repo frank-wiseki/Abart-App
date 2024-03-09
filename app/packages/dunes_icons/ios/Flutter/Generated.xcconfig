@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/apple/development/flutter
-FLUTTER_APPLICATION_PATH=/Users/hakeem/app/packages/dunes_icons
+FLUTTER_ROOT=/Users/frank/Documents/flutter/flutter
+FLUTTER_APPLICATION_PATH=/Users/frank/Documents/GitHub/Abart-App/app/packages/dunes_icons
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build

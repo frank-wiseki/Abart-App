@@ -132,8 +132,7 @@ class _OrderSummaryState extends State<OrderSummary> {
                       Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).colorScheme.onSecondary,
-                      onPrimary: Theme.of(context).colorScheme.secondary,
+                      foregroundColor: Theme.of(context).colorScheme.secondary, backgroundColor: Theme.of(context).colorScheme.onSecondary,
                     ),
                     child: Text(widget.appStateModel.blocks.localeText.localeTextContinue),
                   ),

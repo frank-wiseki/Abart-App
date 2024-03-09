@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/apple/development/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/hakeem/app/packages/dunes_icons"
+export "FLUTTER_ROOT=/Users/frank/Documents/flutter/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/frank/Documents/GitHub/Abart-App/app/packages/dunes_icons"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"

@@ -28,12 +28,10 @@ class BlockThemes {
       light: json['useFlexTheme'] == true ? flexThemeFromJson(json['flexLight'], 'light') : json['light'] == null ? ThemeData(
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
+                foregroundColor: Colors.white, backgroundColor: Colors.blue, shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(0.0)),
                 ),
-                primary: Colors.blue,
                 elevation: 0.0,
-                onPrimary:  Colors.white,
                 shadowColor: Colors.black,
                 minimumSize: Size(600.0, 48.0),
                 padding: EdgeInsets.all(0),
@@ -43,12 +41,10 @@ class BlockThemes {
       dark: json['useFlexTheme'] == true ? flexThemeFromJson(json['flexDark'], 'dark') : json['dark'] == null ? ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
+              foregroundColor: Colors.white, backgroundColor: Colors.blue, shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(0.0)),
-              ),
-              primary: Colors.blue ,
+              ) ,
               elevation: 0.0,
-              onPrimary:  Colors.white,
               shadowColor: Colors.black,
               minimumSize: Size(600.0, 48.0),
               padding: EdgeInsets.all(0),
@@ -74,7 +70,6 @@ ThemeData _buildTheme(dynamic json, dynamic buttonTheme) {
     // textTheme: GoogleFonts.montserratTextTheme(ThemeData(brightness: Brightness.light).textTheme),
     // accentTextTheme: GoogleFonts.montserratTextTheme(ThemeData(accentColor: accentColor).accentTextTheme),
     brightness: json['brightness'] == 'Brightness.dark' ? Brightness.dark : Brightness.light,
-    primarySwatch: createPrimarySwatch(HexColor(json['primaryColor'])),
     primaryColor: primaryColor,
     primaryColorLight: _nullOrEmptyOrFalse(json['primaryColorLight']) ? null : HexColor(json['primaryColorLight']),
     primaryColorDark: _nullOrEmptyOrFalse(json['primaryColorDark']) ? null : HexColor(json['primaryColorDark']),
@@ -82,27 +77,19 @@ ThemeData _buildTheme(dynamic json, dynamic buttonTheme) {
     canvasColor: _nullOrEmptyOrFalse(json['canvasColor']) ? null : HexColor(json['canvasColor']),
     shadowColor: _nullOrEmptyOrFalse(json['shadowColor']) ? null : HexColor(json['shadowColor']),
     scaffoldBackgroundColor: _nullOrEmptyOrFalse(json['scaffoldBackgroundColor']) ? null : HexColor(json['scaffoldBackgroundColor']),
-    bottomAppBarColor: _nullOrEmptyOrFalse(json['bottomAppBarColor']) ? null : HexColor(json['bottomAppBarColor']),
     cardColor: _nullOrEmptyOrFalse(json['cardColor']) ? null : HexColor(json['cardColor']),
     dividerColor: _nullOrEmptyOrFalse(json['dividerColor']) ? null : HexColor(json['dividerColor']),
     focusColor: _nullOrEmptyOrFalse(json['focusColor']) ? null : HexColor(json['focusColor']),
     hoverColor: _nullOrEmptyOrFalse(json['hoverColor']) ? null : HexColor(json['hoverColor']),
     highlightColor: _nullOrEmptyOrFalse(json['highlightColor']) ? null : HexColor(json['highlightColor']),
     splashColor: _nullOrEmptyOrFalse(json['splashColor']) ? null : HexColor(json['splashColor']),
-    selectedRowColor: _nullOrEmptyOrFalse(json['selectedRowColor']) ? null : HexColor(json['selectedRowColor']),
     unselectedWidgetColor: _nullOrEmptyOrFalse(json['unselectedWidgetColor']) ? null : HexColor(json['unselectedWidgetColor']),
     disabledColor: _nullOrEmptyOrFalse(json['disabledColor']) ? null : HexColor(json['disabledColor']),
     //buttonColor: _nullOrEmptyOrFalse(json['buttonColor']) ? null : HexColor(json['buttonColor']),
     secondaryHeaderColor: _nullOrEmptyOrFalse(json['secondaryHeaderColor']) ? null : HexColor(json['secondaryHeaderColor']),
-    //textSelectionColor: _nullOrEmptyOrFalse(json['textSelectionColor']) ? null : HexColor(json['textSelectionColor']),
-    //cursorColor: _nullOrEmptyOrFalse(json['cursorColor']) ? null : HexColor(json['cursorColor']),
-    //textSelectionHandleColor: _nullOrEmptyOrFalse(json['textSelectionHandleColor']) ? null : HexColor(json['textSelectionHandleColor']),
-    backgroundColor: _nullOrEmptyOrFalse(json['backgroundColor']) ? null : HexColor(json['backgroundColor']),
     dialogBackgroundColor: _nullOrEmptyOrFalse(json['dialogBackgroundColor']) ? null : HexColor(json['dialogBackgroundColor']),
     indicatorColor: _nullOrEmptyOrFalse(json['indicatorColor']) ? null : HexColor(json['indicatorColor']),
     hintColor: _nullOrEmptyOrFalse(json['hintColor']) ? null : HexColor(json['hintColor']),
-    errorColor: _nullOrEmptyOrFalse(json['errorColor']) ? null : HexColor(json['errorColor']),
-    toggleableActiveColor: _nullOrEmptyOrFalse(json['toggleableActiveColor']) ? null : HexColor(json['toggleableActiveColor']),
     fontFamily: _nullOrEmptyOrFalse(json['fontFamily']) ? null : getGoogleFont(json['fontFamily']).fontFamily,
     appBarTheme: _nullOrEmptyOrFalse(json['appBarTheme']) ? AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -111,24 +98,20 @@ ThemeData _buildTheme(dynamic json, dynamic buttonTheme) {
     ) : _buildAppBarTheme(json['appBarTheme']),
     elevatedButtonTheme: _nullOrEmptyOrFalse(buttonTheme) ? ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
+          foregroundColor: Colors.white, backgroundColor: Colors.blue, shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(0.0)),
-          ),
-          primary: Colors.blue ,
+          ) ,
           elevation: 0.0,
-          onPrimary:  Colors.white,
           shadowColor: Colors.black,
           minimumSize: Size(600.0, 48.0),
           padding: EdgeInsets.all(0),
         )
     ) : ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
+          foregroundColor: _nullOrEmptyOrFalse(buttonTheme['onPrimary']) ? Colors.white : HexColor(buttonTheme['onPrimary']), backgroundColor: _nullOrEmptyOrFalse(buttonTheme['primary']) ? Colors.blue : HexColor(buttonTheme['primary']), shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(buttonRadius)),
           ),
-          primary: _nullOrEmptyOrFalse(buttonTheme['primary']) ? Colors.blue : HexColor(buttonTheme['primary']),
           elevation: _nullOrEmptyOrFalse(buttonTheme['elevation']) ? 0.0 : double.parse(buttonTheme['elevation'].toString()),
-          onPrimary: _nullOrEmptyOrFalse(buttonTheme['onPrimary']) ? Colors.white : HexColor(buttonTheme['onPrimary']),
           shadowColor: _nullOrEmptyOrFalse(buttonTheme['shadowColor']) ? Colors.black : HexColor(buttonTheme['shadowColor']),
           minimumSize: Size(_nullOrEmptyOrFalse(buttonTheme['minWidth']) ? 600.0 : double.parse(buttonTheme['minWidth'].toString()), _nullOrEmptyOrFalse(buttonTheme['minHeight']) ? 48.0 : double.parse(buttonTheme['minHeight'].toString())),
           padding: EdgeInsets.all(_nullOrEmptyOrFalse(buttonTheme['padding']) ? 0.0 : double.parse(buttonTheme['padding'].toString())),
@@ -136,7 +119,7 @@ ThemeData _buildTheme(dynamic json, dynamic buttonTheme) {
     ),
     textButtonTheme: _nullOrEmptyOrFalse(buttonTheme) ? null : TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: _nullOrEmptyOrFalse(buttonTheme['primary']) ? Colors.blue : HexColor(buttonTheme['primary']),
+        foregroundColor: _nullOrEmptyOrFalse(buttonTheme['primary']) ? Colors.blue : HexColor(buttonTheme['primary']),
       ),
     ),
     bottomNavigationBarTheme: _nullOrEmptyOrFalse(json['bottomNavigationBarTheme']) ? null : _buildBottomNavigationBarThemeTheme(json['bottomNavigationBarTheme']),
@@ -162,8 +145,30 @@ ThemeData _buildTheme(dynamic json, dynamic buttonTheme) {
           onError: Colors.white,
           brightness: buttonColor.isDark ? Brightness.dark : Brightness.light
       ),
-    ),
-    colorScheme: _nullOrEmptyOrFalse(json['colorScheme']) ? null : _buildColorsScheme(json['colorScheme'])
+    ), checkboxTheme: CheckboxThemeData(
+ fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+ if (states.contains(MaterialState.disabled)) { return null; }
+ if (states.contains(MaterialState.selected)) { return _nullOrEmptyOrFalse(json['toggleableActiveColor']) ? null : HexColor(json['toggleableActiveColor']); }
+ return null;
+ }),
+ ), radioTheme: RadioThemeData(
+ fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+ if (states.contains(MaterialState.disabled)) { return null; }
+ if (states.contains(MaterialState.selected)) { return _nullOrEmptyOrFalse(json['toggleableActiveColor']) ? null : HexColor(json['toggleableActiveColor']); }
+ return null;
+ }),
+ ), switchTheme: SwitchThemeData(
+ thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+ if (states.contains(MaterialState.disabled)) { return null; }
+ if (states.contains(MaterialState.selected)) { return _nullOrEmptyOrFalse(json['toggleableActiveColor']) ? null : HexColor(json['toggleableActiveColor']); }
+ return null;
+ }),
+ trackColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+ if (states.contains(MaterialState.disabled)) { return null; }
+ if (states.contains(MaterialState.selected)) { return _nullOrEmptyOrFalse(json['toggleableActiveColor']) ? null : HexColor(json['toggleableActiveColor']); }
+ return null;
+ }),
+ ), bottomAppBarTheme: BottomAppBarTheme(color: _nullOrEmptyOrFalse(json['bottomAppBarColor']) ? null : HexColor(json['bottomAppBarColor'])), colorScheme: _nullOrEmptyOrFalse(json['colorScheme']) ? null : _buildColorsScheme(json['colorScheme']).copyWith(primarySwatch: createPrimarySwatch(HexColor(json['primaryColor'])), background: _nullOrEmptyOrFalse(json['backgroundColor']) ? null : HexColor(json['backgroundColor'])).copyWith(error: _nullOrEmptyOrFalse(json['errorColor']) ? null : HexColor(json['errorColor']))
   );
 }
 
